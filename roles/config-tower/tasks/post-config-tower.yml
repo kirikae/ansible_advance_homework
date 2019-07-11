@@ -1,17 +1,16 @@
-- name: Create Homework Assignment project
+- name: Create Homework Assignment project 
 # Use tower module or tower-cli to create Ansible Tower project. Name of the project is specifed in ./vars/main.yml
-  command: >
-    tower-cli project create
-    --name "{{ proj_name }}"
-    --scm-type git
-    --scm-url "{{ scm_url }}"
+  command: |
+    tower-cli project create --name "{{proj_name}}" --scm-type git --scm-url "{{ scm_url }}"
 
+
+- name: Machine Credentail to connect to workstation using openstack.pub
   tower_credential:
     name: Connect_to_workstation
     organization: Default
     state: present
     kind: ssh
-    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
+    tower_host: tower1.3776.example.opentlc.com
     tower_username: admin
     tower_password: r3dh4t1!
     ssh_key_data: "/root/.ssh/openstack.pem"
@@ -21,16 +20,16 @@
   command: |
     tower-cli inventory create -n "{{static_inventory_name}}" --organization "{{org_name}}"
 
-- name: Create Group in static inventory
+- name: Create Group in static inventory 
   command: |
     tower-cli group create --inventory "{{static_inventory_name}}"  --name {{group_name}}
 
-- name: Add workstation host in tower_inventory
+- name: Add workstation host in tower_inventory 
   command: |
     tower-cli host create --inventory "{{static_inventory_name}}" --name "{{host_name}}"
 
-- name: Associate workstation host to group
-  command: |
+- name: Associate workstation host to group 
+  command: | 
     tower-cli host associate --host "{{host_name}}" --group "{{group_name}}"
 
 
@@ -40,7 +39,7 @@
     organization: Default
     state: present
     kind: ssh
-    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
+    tower_host: tower1.3776.example.opentlc.com
     tower_username: admin
     tower_password: r3dh4t1!
     tower_verify_ssl: no
