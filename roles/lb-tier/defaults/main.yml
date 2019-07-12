@@ -1,2 +1,4 @@
 ---
 # defaults file for lb-tier
+
+lb_basedir: /etc/haproxy
