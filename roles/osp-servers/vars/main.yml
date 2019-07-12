@@ -37,3 +37,53 @@ osp_servers:
     security_group: db
     meta:
       - { group: appdbs, deployment_name: QA}
+
+instances:
+  - name: app1
+    image: rhel-guest
+    instance_group: apps
+    deployment_name: QA
+    flavor: m2.small
+    keypair: ansible_ssh
+    security_groups:
+      - apps
+    networks:
+      - net-name: int_network
+    floating_ip_pool:
+      - ext_network
+  - name: app2
+    image: rhel-guest
+    instance_group: apps
+    deployment_name: QA
+    flavor: m2.small
+    keypair: ansible_ssh
+    security_groups:
+      - apps
+    networks:
+      - net-name: int_network
+    floating_ip_pool:
+      - ext_network
+  - name: db
+    image: rhel-guest
+    instance_group: appdbs
+    deployment_name: QA
+    flavor: m2.small
+    keypair: ansible_ssh
+    security_groups:
+      - db
+    networks:
+      - net-name: int_network
+    floating_ip_pool:
+      - ext_network
+  - name: frontend
+    image: rhel-guest
+    instance_group: frontends
+    deployment_name: QA
+    flavor: m2.small
+    keypair: ansible_ssh
+    security_groups:
+      - frontend
+    networks:
+      - net-name: int_network
+    floating_ip_pool:
+      - ext_network
