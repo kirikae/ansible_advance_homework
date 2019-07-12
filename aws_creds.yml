@@ -2,14 +2,14 @@
   gather_facts: true
   become: true
   tasks:
-  - name: Install required packages 
-    yum: 
+  - name: Install required packages
+    yum:
      name: "{{item}}"
-     state: latest 
-    loop: 
-      - python 
-      - python-pip 
-      - python-devel 
+     state: latest
+    loop:
+      - python
+      - python-pip
+      - python-devel
       - gcc
   - name: Install tower-cli
     pip:
@@ -54,5 +54,3 @@
       job_type: run
       playbook: site-smoketest-aws.yml
       project: "Homework Assignment"
-
-    
