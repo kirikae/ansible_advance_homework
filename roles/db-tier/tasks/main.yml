@@ -8,7 +8,7 @@
 
 - name: Start and enable PostgreSQL
   service:
-    name: postgres
+    name: postgresql
     state: started
     enabled: true
 
