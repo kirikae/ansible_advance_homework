@@ -1,4 +1,4 @@
 ---
 # defaults file for app-tier
 
-apps_basedir: /us/share/tomcat/webapps/ROOT
+apps_basedir: /usr/share/tomcat/webapps/ROOT
