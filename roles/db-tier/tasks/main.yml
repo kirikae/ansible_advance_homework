@@ -3,7 +3,7 @@
 
 - name: Install PostgreSQL
   package:
-    name: postresql-server
+    name: postgresql-server
     state: latest
 
 - name: Start and enable PostgreSQL
