@@ -12,6 +12,11 @@
     state: started
     enabled: true
 
+- name: Create the Tomcat dir
+  file:
+    path: "{{ apps_basedir }}"
+    state: directory
+
 - name: Deploy the index.html
   template:
     src: index.html.j2
