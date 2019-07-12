@@ -1,2 +1,24 @@
 ---
 # tasks file for db-tier
+
+- name: Install PostgreSQL
+  package:
+    name: postresql-server
+    state: latest
+
+- name: Start and enable PostgreSQL
+  service:
+    name: postgres
+    state: started
+    enabled: true
+
+- name: Check if PostgreSQL is already initialised
+  stat:
+    path: "{{ db_datadir }}/PG_VERSION"
+  register: pgsql_result
+
+- name: Initialise PostgreSQL
+  command: postgresql-setup initdb
+  when: not pgsql_result.stat.exists
+  notify:
+    - restart postgres

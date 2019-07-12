@@ -1,2 +1,5 @@
 ---
 # vars file for db-tier
+
+db_basedir: /var/lib/pgsql
+db_datadir: "{{ db_basedir }}/data"
