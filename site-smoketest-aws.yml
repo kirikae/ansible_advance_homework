@@ -6,7 +6,8 @@
     uri:
       url: "http://{{ item  }}"
       return_content: yes
-    loop: "{{ inventory_hostname | flatten(levels=1) }}"
+    loop:
+      - "{{ inventory_hostname }}"
     register: webpage
 
   - name: Fail if 'Ansible has done its job' is not in the page content
